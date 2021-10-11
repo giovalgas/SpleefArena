@@ -2,6 +2,7 @@ name: SpleefArena
 version: ${project.version}
 main: me.giodev.spleefarena.SpleefArena
 api-version: 1.16
+depend: [WorldGuard,WorldEdit]
 commands:
   spleefarena:
     aliases: ["sa"]

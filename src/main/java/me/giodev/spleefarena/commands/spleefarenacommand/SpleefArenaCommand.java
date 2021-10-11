@@ -27,12 +27,12 @@ public class SpleefArenaCommand extends BaseCommand {
 
   @Override
   public @NotNull String getName() {
-    return "excommand";
+    return "spleefarena";
   }
 
 
   @Override
-  public @NotNull List<String> getAliases() { return Arrays.asList(new String[]{"excmd"}.clone()); }
+  public @NotNull List<String> getAliases() { return Arrays.asList(new String[]{"sa"}.clone()); }
 
   @Override
   public boolean isPlayerOnly() {
