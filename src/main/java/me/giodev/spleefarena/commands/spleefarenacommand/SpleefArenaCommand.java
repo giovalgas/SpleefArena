@@ -2,6 +2,7 @@ package me.giodev.spleefarena.commands.spleefarenacommand;
 
 import me.giodev.spleefarena.SpleefArena;
 import me.giodev.spleefarena.commands.BaseCommand;
+import me.giodev.spleefarena.commands.spleefarenacommand.subcommands.SetPlayAreaSubCommand;
 import me.giodev.spleefarena.data.permissions.Permission;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +13,7 @@ public class SpleefArenaCommand extends BaseCommand {
 
   public SpleefArenaCommand(SpleefArena plugin) {
     super(plugin);
+    subCommands.put("SETAREA", new SetPlayAreaSubCommand());
   }
 
 
@@ -36,7 +38,7 @@ public class SpleefArenaCommand extends BaseCommand {
 
   @Override
   public boolean isPlayerOnly() {
-    return false;
+    return true;
   }
 
 
