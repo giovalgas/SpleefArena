@@ -4,7 +4,6 @@ import me.giodev.spleefarena.commands.BaseCommand;
 import me.giodev.spleefarena.commands.spleefarenacommand.SpleefArenaCommand;
 import me.giodev.spleefarena.data.config.ConfigManager;
 import me.giodev.spleefarena.data.language.LanguageManager;
-import me.giodev.spleefarena.listeners.GUIClickListener;
 import me.giodev.spleefarena.utils.LoggerUtil;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.PluginManager;
@@ -33,7 +32,6 @@ public final class SpleefArena extends JavaPlugin {
 
   private void loadEvents() {
     PluginManager pm = getServer().getPluginManager();
-    pm.registerEvents(new GUIClickListener(this), this);
   }
 
   private void loadCommands() {
