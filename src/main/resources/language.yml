@@ -1,5 +1,5 @@
 messages:
-  message-prefix: "&c[&6TemplatePlugin&c] "
+  message-prefix: "&c[&6SpleefArena&c] "
   no-permission: "&cYou don't have the permission needed to execute that command."
   hello-world: "&aHello World!"
 

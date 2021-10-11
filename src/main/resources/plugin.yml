@@ -1,9 +1,9 @@
-name: TemplatePlugin
+name: SpleefArena
 version: ${project.version}
-main: me.giodev.templateplugin.TemplatePlugin
+main: me.giodev.spleefarena.SpleefArena
 api-version: 1.16
 commands:
-  excommand:
-    aliases: ["excmd"]
-    usage: "/tpcommand <args>"
-    description: "Example command"
+  spleefarena:
+    aliases: ["sa"]
+    usage: "/sa <args>"
+    description: "SpleefArenas's main command"

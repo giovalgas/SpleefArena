@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.giodev</groupId>
-    <artifactId>TemplatePlugin</artifactId>
+    <artifactId>SpleefArena</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>TemplatePlugin</name>
+    <name>SpleefArena</name>
 
     <properties>
         <java.version>1.8</java.version>
