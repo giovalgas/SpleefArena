@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SetPlayAreaSubCommand implements SubCommand {
 
-  private static final String AREA_KEY = "spleefarena_playableArea";
+  public static final String AREA_KEY = "spleefarena_playableArea";
 
   @Override
   public void executeCommand(CommandSender sender, String[] args, SpleefArena plugin) {
