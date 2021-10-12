@@ -3,9 +3,11 @@ package me.giodev.spleefarena;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import it.unimi.dsi.fastutil.Hash;
 import me.giodev.spleefarena.commands.BaseCommand;
 import me.giodev.spleefarena.commands.spleefarenacommand.SpleefArenaCommand;
 import me.giodev.spleefarena.data.config.ConfigManager;
+import me.giodev.spleefarena.data.data.SpleefPlayer;
 import me.giodev.spleefarena.data.language.LanguageManager;
 import me.giodev.spleefarena.listeners.PlayAreaEnterListener;
 import me.giodev.spleefarena.listeners.PlayAreaLeaveListener;
@@ -13,8 +15,12 @@ import me.giodev.spleefarena.utils.LoggerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 
 public final class SpleefArena extends JavaPlugin {
@@ -24,6 +30,7 @@ public final class SpleefArena extends JavaPlugin {
   private LoggerUtil log;
   private WorldGuardPlugin worldGuard;
   private WorldEditPlugin worldEdit;
+  private HashMap<UUID, SpleefPlayer> playersInArena = new HashMap<>();
 
   @Override
   public void onEnable(){
@@ -47,8 +54,8 @@ public final class SpleefArena extends JavaPlugin {
 
   private void loadEvents() {
     PluginManager pm = getServer().getPluginManager();
-    pm.registerEvents(new PlayAreaEnterListener(), this);
-    pm.registerEvents(new PlayAreaLeaveListener(), this);
+    pm.registerEvents(new PlayAreaEnterListener(this), this);
+    pm.registerEvents(new PlayAreaLeaveListener(this), this);
   }
 
   private void loadCommands() {
@@ -75,6 +82,25 @@ public final class SpleefArena extends JavaPlugin {
     } catch (InvalidConfigurationException e) {
       e.printStackTrace();
     }
+  }
+
+  public void addPlayerToArena(Player player) {
+    if(playersInArena.get(player.getUniqueId()) != null) return;
+    playersInArena.put(player.getUniqueId(), new SpleefPlayer(this, player));
+  }
+
+  public void removePlayerFromArena(Player player) {
+    if(playersInArena.get(player.getUniqueId()) == null) return;
+
+    SpleefPlayer spleefPlayer = playersInArena.get(player.getUniqueId());
+    spleefPlayer.resetPlayer();
+
+    playersInArena.remove(player.getUniqueId());
+
+  }
+
+  public SpleefPlayer getSpleefPlayer(Player player) {
+    return playersInArena.get(player.getUniqueId());
   }
 
   private WorldGuardPlugin loadWorldGuard() {

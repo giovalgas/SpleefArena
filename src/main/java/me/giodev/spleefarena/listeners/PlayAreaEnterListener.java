@@ -1,5 +1,6 @@
 package me.giodev.spleefarena.listeners;
 
+import me.giodev.spleefarena.SpleefArena;
 import me.giodev.spleefarena.commands.spleefarenacommand.subcommands.SetPlayAreaSubCommand;
 import me.giodev.spleefarena.utils.WorldGuardUtil;
 import org.bukkit.entity.Player;
@@ -8,6 +9,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayAreaEnterListener implements Listener {
+
+  private SpleefArena plugin;
+
+  public PlayAreaEnterListener(SpleefArena plugin) {
+    this.plugin = plugin;
+  }
 
   @EventHandler
   public void onPlayerMove(PlayerMoveEvent event) {
@@ -19,7 +26,8 @@ public class PlayAreaEnterListener implements Listener {
     if(WorldGuardUtil.isPlayerInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY) &&
             !(WorldGuardUtil.isPlayerInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY))
     ) {
-      player.sendMessage("ENTROU SPLEEF");
+      plugin.addPlayerToArena(player);
+      player.sendMessage("Joined Spleef"); //TODO -> Add messages
     }
 
   }
