@@ -19,7 +19,7 @@ public class PlayAreaLeaveListener implements Listener {
   @EventHandler
   public void onPlayerMove(PlayerMoveEvent event) {
 
-    if(event.getFrom().distance(event.getTo()) == 0 || plugin.getSpleefPlayer(event.getPlayer()) != null) return;
+    if(event.getFrom().distance(event.getTo()) == 0 || plugin.getSpleefPlayer(event.getPlayer()) == null) return;
 
     Player player = event.getPlayer();
 

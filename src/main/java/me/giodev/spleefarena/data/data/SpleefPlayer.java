@@ -47,12 +47,6 @@ public class SpleefPlayer {
     player.teleport(resetLocation);
   }
 
-  public void killPlayer() { //TODO -> Add messages
-    player.teleport(resetLocation);
-    this.giveKit();
-    deaths++;
-  }
-
   private void giveKit() {
     ItemStack shovel = new ItemStack(XMaterial.GOLDEN_SHOVEL.parseMaterial()); {
       ItemMeta shovelMeta = shovel.getItemMeta();
