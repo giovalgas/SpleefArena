@@ -34,7 +34,7 @@ public final class SpleefArena extends JavaPlugin {
   private HashMap<UUID, SpleefPlayer> playersInArena = new HashMap<>();
 
   @Override
-  public void onEnable(){
+  public void onEnable() {
     //Load config, language & logger
     loadConfig();
     loadLang();
@@ -51,6 +51,14 @@ public final class SpleefArena extends JavaPlugin {
   private void loadDependencies() {
     this.worldGuard = loadWorldGuard();
     this.worldEdit = loadWorldEdit();
+  }
+
+  @Override
+  public void onDisable() {
+    log.info("Resetting all players");
+    for(SpleefPlayer sp : playersInArena.values()) {
+      sp.resetPlayer();
+    }
   }
 
   private void loadEvents() {
