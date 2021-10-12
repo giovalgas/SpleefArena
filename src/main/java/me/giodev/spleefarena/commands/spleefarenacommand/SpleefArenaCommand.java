@@ -2,6 +2,7 @@ package me.giodev.spleefarena.commands.spleefarenacommand;
 
 import me.giodev.spleefarena.SpleefArena;
 import me.giodev.spleefarena.commands.BaseCommand;
+import me.giodev.spleefarena.commands.spleefarenacommand.subcommands.AddLayerSubCommand;
 import me.giodev.spleefarena.commands.spleefarenacommand.subcommands.SetPlayAreaSubCommand;
 import me.giodev.spleefarena.data.permissions.Permission;
 import org.bukkit.command.CommandSender;
@@ -14,6 +15,7 @@ public class SpleefArenaCommand extends BaseCommand {
   public SpleefArenaCommand(SpleefArena plugin) {
     super(plugin);
     subCommands.put("SETAREA", new SetPlayAreaSubCommand());
+    subCommands.put("ADDLAYER", new AddLayerSubCommand());
   }
 
 

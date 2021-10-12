@@ -11,6 +11,7 @@ import me.giodev.spleefarena.data.config.ConfigManager;
 import me.giodev.spleefarena.data.data.SpleefPlayer;
 import me.giodev.spleefarena.data.language.LanguageManager;
 import me.giodev.spleefarena.listeners.*;
+import me.giodev.spleefarena.utils.ArenaManager;
 import me.giodev.spleefarena.utils.LoggerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -31,6 +32,7 @@ public final class SpleefArena extends JavaPlugin {
   private WorldGuardPlugin worldGuard;
   private WorldEditPlugin worldEdit;
   private HashMap<UUID, SpleefPlayer> playersInArena = new HashMap<>();
+  private ArenaManager arenaManager;
 
   @Override
   public void onEnable() {
@@ -44,6 +46,7 @@ public final class SpleefArena extends JavaPlugin {
     loadEvents();
     loadDependencies();
 
+    arenaManager = new ArenaManager(this);
     log.info("Plugin fully started!");
   }
 
@@ -136,6 +139,7 @@ public final class SpleefArena extends JavaPlugin {
 
   }
 
+  public ArenaManager getArenaManager() { return arenaManager; }
   public WorldGuardPlugin getWorldGuard() { return worldGuard; }
   public LoggerUtil getLog() { return log; }
   public ConfigManager getConfigManager() { return configManager; }
