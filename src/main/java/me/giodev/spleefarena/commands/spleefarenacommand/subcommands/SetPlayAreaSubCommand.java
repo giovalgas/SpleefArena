@@ -42,6 +42,7 @@ public class SetPlayAreaSubCommand implements SubCommand {
       rm.removeRegion(AREA_KEY);
     }
 
+    plugin.getArenaManager().setArenaWorld(player.getWorld());
     rm.addRegion(playableArea);
 
   }

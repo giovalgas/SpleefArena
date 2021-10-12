@@ -58,9 +58,14 @@ public final class SpleefArena extends JavaPlugin {
   @Override
   public void onDisable() {
     log.info("Resetting all players");
+
     for(SpleefPlayer sp : playersInArena.values()) {
       sp.resetPlayer();
     }
+
+    arenaManager.cancelRunnable();
+    arenaManager.saveArenaInfo();
+
   }
 
   private void loadEvents() {

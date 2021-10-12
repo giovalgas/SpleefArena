@@ -1,0 +1,13 @@
+# arena.yml - Spleef Arena
+
+# This file is for internal use only.
+# Please don't change anything you see in this file.
+# Use the commands /sa addlayer & /sa setarea instead.
+
+arena:
+  world: "world"
+
+snow-layers:
+
+
+
