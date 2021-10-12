@@ -1,23 +1,18 @@
 package me.giodev.spleefarena.commands.spleefarenacommand.subcommands;
 
-import com.sk89q.worldedit.IncompleteRegionException;
-import com.sk89q.worldedit.LocalSession;
-import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldedit.entity.Player;
 import com.sk89q.worldedit.regions.Region;
-import com.sk89q.worldedit.util.formatting.text.TextComponent;
-import com.sk89q.worldedit.world.World;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import me.giodev.spleefarena.SpleefArena;
 import me.giodev.spleefarena.commands.SubCommand;
 import me.giodev.spleefarena.data.permissions.Permission;
+import me.giodev.spleefarena.utils.WorldEditUtil;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,18 +25,8 @@ public class SetPlayAreaSubCommand implements SubCommand {
 
     //TODO -> Add proper messages
 
-    Player actor = BukkitAdapter.adapt((org.bukkit.entity.Player) sender);
-    LocalSession localSession = WorldEdit.getInstance().getSessionManager().get(actor);
-    World selectionWorld = localSession.getSelectionWorld();
-    Region selection;
-
-    try {
-      if(selectionWorld == null) throw new IncompleteRegionException();
-      selection = localSession.getSelection(selectionWorld);
-    } catch (IncompleteRegionException e) {
-      actor.printError(TextComponent.of("Please make a region selection first."));
-      return;
-    }
+    Player player = (Player) sender;
+    Region selection = WorldEditUtil.getPlayerSelection(BukkitAdapter.adapt(player));
 
     ProtectedCuboidRegion playableArea = new ProtectedCuboidRegion(
             AREA_KEY,
@@ -52,7 +37,7 @@ public class SetPlayAreaSubCommand implements SubCommand {
     playableArea.setFlag(Flags.GREET_MESSAGE, "Spleef");
     playableArea.setFlag(Flags.PVP, StateFlag.State.DENY);
 
-    RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(selectionWorld);
+    RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(player.getWorld()));
 
     if(rm.getRegion(AREA_KEY) != null) {
       rm.removeRegion(AREA_KEY);
