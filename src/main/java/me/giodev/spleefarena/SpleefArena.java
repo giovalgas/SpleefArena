@@ -8,6 +8,7 @@ import me.giodev.spleefarena.commands.spleefarenacommand.SpleefArenaCommand;
 import me.giodev.spleefarena.data.config.ConfigManager;
 import me.giodev.spleefarena.data.language.LanguageManager;
 import me.giodev.spleefarena.listeners.PlayAreaEnterListener;
+import me.giodev.spleefarena.listeners.PlayAreaLeaveListener;
 import me.giodev.spleefarena.utils.LoggerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -47,6 +48,7 @@ public final class SpleefArena extends JavaPlugin {
   private void loadEvents() {
     PluginManager pm = getServer().getPluginManager();
     pm.registerEvents(new PlayAreaEnterListener(), this);
+    pm.registerEvents(new PlayAreaLeaveListener(), this);
   }
 
   private void loadCommands() {

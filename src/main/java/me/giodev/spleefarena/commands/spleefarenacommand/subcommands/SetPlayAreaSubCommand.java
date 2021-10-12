@@ -34,7 +34,6 @@ public class SetPlayAreaSubCommand implements SubCommand {
             selection.getMaximumPoint()
     );
 
-    playableArea.setFlag(Flags.GREET_MESSAGE, "Spleef");
     playableArea.setFlag(Flags.PVP, StateFlag.State.DENY);
 
     RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(player.getWorld()));

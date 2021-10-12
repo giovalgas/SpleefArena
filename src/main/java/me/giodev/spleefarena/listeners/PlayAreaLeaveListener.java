@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class PlayAreaEnterListener implements Listener {
+public class PlayAreaLeaveListener implements Listener {
 
   @EventHandler
   public void onPlayerMove(PlayerMoveEvent event) {
@@ -16,14 +16,12 @@ public class PlayAreaEnterListener implements Listener {
 
     Player player = event.getPlayer();
 
-    if(WorldGuardUtil.isPlayerInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY) &&
-            !(WorldGuardUtil.isPlayerInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY))
+    if(WorldGuardUtil.isPlayerInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY) &&
+            !(WorldGuardUtil.isPlayerInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY))
     ) {
-      player.sendMessage("ENTROU SPLEEF");
+      player.sendMessage("SAIU SPLEEF");
     }
 
   }
 
-
 }
-
