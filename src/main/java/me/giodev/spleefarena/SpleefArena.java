@@ -4,14 +4,13 @@ import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import it.unimi.dsi.fastutil.Hash;
+import jdk.nashorn.internal.ir.Block;
 import me.giodev.spleefarena.commands.BaseCommand;
 import me.giodev.spleefarena.commands.spleefarenacommand.SpleefArenaCommand;
 import me.giodev.spleefarena.data.config.ConfigManager;
 import me.giodev.spleefarena.data.data.SpleefPlayer;
 import me.giodev.spleefarena.data.language.LanguageManager;
-import me.giodev.spleefarena.listeners.PlayAreaEnterListener;
-import me.giodev.spleefarena.listeners.PlayAreaLeaveListener;
-import me.giodev.spleefarena.listeners.SpleefPlayerDeathListener;
+import me.giodev.spleefarena.listeners.*;
 import me.giodev.spleefarena.utils.LoggerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -66,6 +65,8 @@ public final class SpleefArena extends JavaPlugin {
     pm.registerEvents(new PlayAreaEnterListener(this), this);
     pm.registerEvents(new PlayAreaLeaveListener(this), this);
     pm.registerEvents(new SpleefPlayerDeathListener(this),this);
+    pm.registerEvents(new SnowballListener(), this);
+    pm.registerEvents(new BlockBreakListener(), this);
   }
 
   private void loadCommands() {

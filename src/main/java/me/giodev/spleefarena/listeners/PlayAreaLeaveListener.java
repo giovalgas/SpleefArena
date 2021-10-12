@@ -23,8 +23,8 @@ public class PlayAreaLeaveListener implements Listener {
 
     Player player = event.getPlayer();
 
-    if(WorldGuardUtil.isPlayerInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY) &&
-            !(WorldGuardUtil.isPlayerInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY))
+    if(WorldGuardUtil.isLocationInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY) &&
+            !(WorldGuardUtil.isLocationInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY))
     ) {
       plugin.removePlayerFromArena(player);
       player.sendMessage("Left Spleef"); //TODO -> add messages

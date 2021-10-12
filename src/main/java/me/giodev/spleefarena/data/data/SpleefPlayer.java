@@ -3,6 +3,8 @@ package me.giodev.spleefarena.data.data;
 import com.cryptomorin.xseries.XEnchantment;
 import com.cryptomorin.xseries.XMaterial;
 import me.giodev.spleefarena.SpleefArena;
+import me.giodev.spleefarena.data.items.Snowballs;
+import me.giodev.spleefarena.data.items.SpleefShovel;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -29,7 +31,7 @@ public class SpleefPlayer {
   public SpleefPlayer(SpleefArena plugin, Player player) {
     this.plugin = plugin;
     this.player = player;
-    this.resetLocation = new Location(Bukkit.getWorld("world"), 750, 69, 1511); //TODO -> add config.yml
+    this.resetLocation = new Location(Bukkit.getWorld("world"), 723, 83, 1521); //TODO -> add config.yml
     this.loadPlayer();
   }
 
@@ -48,21 +50,10 @@ public class SpleefPlayer {
   }
 
   private void giveKit() {
-    ItemStack shovel = new ItemStack(XMaterial.GOLDEN_SHOVEL.parseMaterial()); {
-      ItemMeta shovelMeta = shovel.getItemMeta();
-      shovelMeta.setDisplayName(ChatColor.BLUE + "Spleef Shovel");
-      shovelMeta.setUnbreakable(true);
-      shovelMeta.addEnchant(XEnchantment.DIG_SPEED.parseEnchantment(), 5, false);
-      shovel.setItemMeta(shovelMeta);
-    }
-    ItemStack snowballs = new ItemStack(XMaterial.SNOWBALL.parseMaterial(), 16); {
-      ItemMeta snowballMeta = snowballs.getItemMeta();
-      snowballMeta.setDisplayName(ChatColor.BLUE + "Snowballs");
-      snowballs.setItemMeta(snowballMeta);
-    }
+    ItemStack shovel = SpleefShovel.getSpleefShovel();
+    ItemStack snowballs = Snowballs.getSnowball(16);
 
     player.getInventory().setContents(new ItemStack[]{shovel,snowballs});
-
   }
 
   public int getDeaths() {

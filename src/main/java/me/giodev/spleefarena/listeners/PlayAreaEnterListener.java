@@ -23,8 +23,8 @@ public class PlayAreaEnterListener implements Listener {
 
     Player player = event.getPlayer();
 
-    if(WorldGuardUtil.isPlayerInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY) &&
-            !(WorldGuardUtil.isPlayerInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY))
+    if(WorldGuardUtil.isLocationInRegion(event.getTo(), SetPlayAreaSubCommand.AREA_KEY) &&
+            !(WorldGuardUtil.isLocationInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY))
     ) {
       plugin.addPlayerToArena(player);
       player.sendMessage("Joined Spleef"); //TODO -> Add messages

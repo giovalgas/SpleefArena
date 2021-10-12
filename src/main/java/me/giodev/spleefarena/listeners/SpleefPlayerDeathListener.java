@@ -1,6 +1,8 @@
 package me.giodev.spleefarena.listeners;
 
 import me.giodev.spleefarena.SpleefArena;
+import me.giodev.spleefarena.commands.spleefarenacommand.subcommands.SetPlayAreaSubCommand;
+import me.giodev.spleefarena.utils.WorldGuardUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +23,7 @@ public class SpleefPlayerDeathListener implements Listener {
     Player player = event.getPlayer();
     int deathY = 35; //TODO -> add to config file
 
-    if(event.getTo().getY() <= deathY) {
+    if(event.getTo().getY() <= deathY && WorldGuardUtil.isLocationInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY)) {
       plugin.getSpleefPlayer(player).resetPlayer();
       //TODO -> add messages
     }

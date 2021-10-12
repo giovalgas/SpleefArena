@@ -11,7 +11,7 @@ import org.bukkit.Location;
 
 public class WorldGuardUtil {
 
-  public static boolean isPlayerInRegion(Location playerLocation, String areaKey) {
+  public static boolean isLocationInRegion(Location playerLocation, String areaKey) {
     World world = BukkitAdapter.adapt(playerLocation.getWorld());
     RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(world);
     ApplicableRegionSet set = rm.getApplicableRegions(BlockVector3.at(playerLocation.getX(), playerLocation.getY(), playerLocation.getZ()));
