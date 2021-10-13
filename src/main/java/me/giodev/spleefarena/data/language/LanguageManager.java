@@ -59,13 +59,13 @@ public class LanguageManager {
     this.chatPrefix = getString(LanguageKeys.MESSAGE_PREFIX, LanguageDefaults.MESSAGE_PREFIX);
     this.noPermission = chatPrefix + getString(LanguageKeys.NO_PERMISSION, LanguageDefaults.NO_PERMISSION);
     this.help = getStringList(LanguageKeys.HELP, LanguageDefaults.HELP);
-    this.configReloaded = getString(LanguageKeys.CONFIG_RELOADED, LanguageDefaults.CONFIG_RELOADED);
+    this.configReloaded = chatPrefix + getString(LanguageKeys.CONFIG_RELOADED, LanguageDefaults.CONFIG_RELOADED);
     this.joinedSpleef = getStringList(LanguageKeys.JOINED_SPLEEF, LanguageDefaults.JOINED_SPLEEF);
-    this.leftSpleef = getString(LanguageKeys.LEFT_SPLEEF, LanguageDefaults.LEFT_SPLEEF);
-    this.deathMessage = getString(LanguageKeys.DEATH_MESSAGE, LanguageDefaults.DEATH_MESSAGE);
-    this.playAreaSet = getString(LanguageKeys.PLAY_AREA_SET, LanguageDefaults.PLAY_AREA_SET);
-    this.layerAdded = getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
-    this.selectionError = getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
+    this.leftSpleef = chatPrefix + getString(LanguageKeys.LEFT_SPLEEF, LanguageDefaults.LEFT_SPLEEF);
+    this.deathMessage = chatPrefix + getString(LanguageKeys.DEATH_MESSAGE, LanguageDefaults.DEATH_MESSAGE);
+    this.playAreaSet = chatPrefix + getString(LanguageKeys.PLAY_AREA_SET, LanguageDefaults.PLAY_AREA_SET);
+    this.layerAdded = chatPrefix + getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
+    this.selectionError = chatPrefix + getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
 
     //Sounds
 
