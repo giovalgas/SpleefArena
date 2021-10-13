@@ -1,3 +1,12 @@
 #Config.yml - Spleef Arena
 
 console-prefix: "[SpleefArena] "
+
+arena:
+  reset-timer: 180 # Amount of seconds before a arena reset
+  reset-location: [723, 83, 1521] # Place where a player goes when he dies or leaves the arena [X,Y,Z]
+  death-height: 35 # Height value that kills the player
+
+items:
+  snowball-start-amount: 16 # Amount of snowballs you start with
+  snowball-break-amount: 1 # Amount of snowballs gained when you break a snow block
