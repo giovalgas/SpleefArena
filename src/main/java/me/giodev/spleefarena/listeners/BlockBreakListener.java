@@ -15,7 +15,7 @@ public class BlockBreakListener implements Listener {
 
   @EventHandler
   public void onBlockBreak(BlockBreakEvent event) {
-    if(!WorldGuardUtil.isLocationInRegion(event.getBlock().getLocation(), SetPlayAreaSubCommand.AREA_KEY)) return;
+    if(!WorldGuardUtil.isLocationInRegion(event.getBlock().getLocation(), SetPlayAreaSubCommand.AREA_KEY) || event.getBlock() == null) return;
 
     event.setCancelled(true);
     event.getBlock().setType(XMaterial.AIR.parseMaterial());
