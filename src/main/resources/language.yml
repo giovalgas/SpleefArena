@@ -1,7 +1,25 @@
+#Language.yml - SpleefArena
+
 messages:
   message-prefix: "&c[&6SpleefArena&c] "
-  no-permission: "&cYou don't have the permission needed to execute that command."
-  hello-world: "&aHello World!"
 
-sounds:
-  test-sound: CLICK
+  help:
+    - "&8&m---------------------------------"
+    - "&e&lSpleefArena"
+    - "&7▪ &e/sa &7- Displays this list"
+    - "&7▪ &e/sa leave &7- Leaves the spleef arena"
+    - "&8&m---------------------------------"
+
+  no-permission: "&cYou don't have the permission needed to execute that command."
+  config-reloaded: "&eReloaded the config file!"
+
+  joined-spleef:
+    - "&eYou have joined the spleef arena!"
+    - "&eType &b/sa leave &eto leave"
+  left-spleef: "&eYou have left the spleef arena"
+  death-message: "&eYou have died in the spleef arena."
+
+  play-area-set: "&eSuccessfully set the arena area!"
+  layer-added: "&eSuccessfully added a new snow layer!"
+
+  selection-error: "&cYou need to make a selection first."
