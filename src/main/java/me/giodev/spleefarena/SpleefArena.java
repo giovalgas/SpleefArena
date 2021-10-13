@@ -38,6 +38,7 @@ public final class SpleefArena extends JavaPlugin {
   @Override
   public void onEnable() {
 
+    //Load plugin instance
     instance = this;
 
     //Load config, language & logger
@@ -108,7 +109,7 @@ public final class SpleefArena extends JavaPlugin {
 
   public void addPlayerToArena(Player player) {
     if(playersInArena.get(player.getUniqueId()) != null) return;
-    playersInArena.put(player.getUniqueId(), new SpleefPlayer(this, player));
+    playersInArena.put(player.getUniqueId(), new SpleefPlayer(player));
   }
 
   public void removePlayerFromArena(Player player) {

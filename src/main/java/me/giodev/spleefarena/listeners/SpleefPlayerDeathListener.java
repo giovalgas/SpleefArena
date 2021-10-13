@@ -17,10 +17,10 @@ public class SpleefPlayerDeathListener implements Listener {
     if(event.getFrom().distance(event.getTo()) == 0 || plugin.getSpleefPlayer(event.getPlayer()) == null) return;
 
     Player player = event.getPlayer();
-    int deathY = plugin.getConfigManager().getDeathHeight(); //TODO -> add to config file
+    int deathY = plugin.getConfigManager().getDeathHeight();
 
     if(event.getTo().getY() <= deathY && WorldGuardUtil.isLocationInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY)) {
-      plugin.getSpleefPlayer(player).resetPlayer();
+      plugin.getSpleefPlayer(player).killPlayer();
       //TODO -> add messages
     }
 
