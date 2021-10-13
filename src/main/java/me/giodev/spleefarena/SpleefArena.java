@@ -33,9 +33,13 @@ public final class SpleefArena extends JavaPlugin {
   private WorldEditPlugin worldEdit;
   private HashMap<UUID, SpleefPlayer> playersInArena = new HashMap<>();
   private ArenaManager arenaManager;
+  private static SpleefArena instance;
 
   @Override
   public void onEnable() {
+
+    instance = this;
+
     //Load config, language & logger
     loadConfig();
     loadLang();
@@ -70,11 +74,10 @@ public final class SpleefArena extends JavaPlugin {
 
   private void loadEvents() {
     PluginManager pm = getServer().getPluginManager();
-    pm.registerEvents(new PlayAreaEnterListener(this), this);
-    pm.registerEvents(new PlayAreaLeaveListener(this), this);
     pm.registerEvents(new SpleefPlayerDeathListener(this),this);
     pm.registerEvents(new SnowballListener(), this);
     pm.registerEvents(new BlockBreakListener(this), this);
+    WorldGuard.getInstance().getPlatform().getSessionManager().registerHandler(ArenaJoinLeaveHandler.FACTORY, null);
   }
 
   private void loadCommands() {
@@ -118,6 +121,8 @@ public final class SpleefArena extends JavaPlugin {
 
   }
 
+  public static SpleefArena getInstance() { return instance; }
+
   public SpleefPlayer getSpleefPlayer(Player player) {
     return playersInArena.get(player.getUniqueId());
   }
@@ -145,9 +150,13 @@ public final class SpleefArena extends JavaPlugin {
   }
 
   public ArenaManager getArenaManager() { return arenaManager; }
+
   public WorldGuardPlugin getWorldGuard() { return worldGuard; }
+
   public LoggerUtil getLog() { return log; }
+
   public ConfigManager getConfigManager() { return configManager; }
+
   public LanguageManager getLanguageManager() { return languageManager; }
 
 }

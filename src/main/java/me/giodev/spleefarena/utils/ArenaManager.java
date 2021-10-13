@@ -7,7 +7,6 @@ import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.CuboidRegion;
 import com.sk89q.worldedit.regions.Region;
-import jdk.nashorn.internal.ir.Block;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -30,7 +29,8 @@ public class ArenaManager {
   private BukkitTask runnable;
   private CountdownTimer timer;
   private YamlConfiguration arenaInfo;
-  private World arenaWorld;
+
+  private static World arenaWorld;
 
   public ArenaManager(SpleefArena plugin) {
     this.plugin = plugin;
@@ -55,7 +55,7 @@ public class ArenaManager {
       e.printStackTrace();
     }
 
-    this.arenaWorld = Bukkit.getWorld(arenaInfo.getString("arena.world"));
+    arenaWorld = Bukkit.getWorld(arenaInfo.getString("arena.world"));
 
     loadSnowLayers();
 
@@ -140,12 +140,16 @@ public class ArenaManager {
   }
 
   public void setArenaWorld(World world) {
-    this.arenaWorld = world;
+    arenaWorld = world;
     arenaInfo.set("arena.world", world.getName());
   }
 
   public void cancelRunnable() {
     runnable.cancel();
+  }
+
+  public static World getArenaWorld() {
+    return arenaWorld;
   }
 
   public void addLayer(Region layer) {
