@@ -18,12 +18,18 @@ public class LanguageManager {
   private YamlConfiguration langFileConfig;
 
   //Messages
-  private String helloWorld;
   private String chatPrefix;
   private String noPermission;
+  private String[] help;
+  private String configReloaded;
+  private String[] joinedSpleef;
+  private String leftSpleef;
+  private String deathMessage;
+  private String playAreaSet;
+  private String layerAdded;
+  private String selectionError;
 
   //Sounds
-  private XSound clickSound;
 
   public LanguageManager(SpleefArena plugin) throws InvalidConfigurationException {
     this.plugin = plugin;
@@ -51,11 +57,17 @@ public class LanguageManager {
   private void loadValues() throws InvalidConfigurationException {
     //Messages
     this.chatPrefix = getString(LanguageKeys.MESSAGE_PREFIX, LanguageDefaults.MESSAGE_PREFIX);
-    this.helloWorld = chatPrefix + getString(LanguageKeys.HELLO_WORLD, LanguageDefaults.HELLO_WORLD);
     this.noPermission = chatPrefix + getString(LanguageKeys.NO_PERMISSION, LanguageDefaults.NO_PERMISSION);
+    this.help = getStringList(LanguageKeys.HELP, LanguageDefaults.HELP);
+    this.configReloaded = getString(LanguageKeys.CONFIG_RELOADED, LanguageDefaults.CONFIG_RELOADED);
+    this.joinedSpleef = getStringList(LanguageKeys.JOINED_SPLEEF, LanguageDefaults.JOINED_SPLEEF);
+    this.leftSpleef = getString(LanguageKeys.LEFT_SPLEEF, LanguageDefaults.LEFT_SPLEEF);
+    this.deathMessage = getString(LanguageKeys.DEATH_MESSAGE, LanguageDefaults.DEATH_MESSAGE);
+    this.playAreaSet = getString(LanguageKeys.PLAY_AREA_SET, LanguageDefaults.PLAY_AREA_SET);
+    this.layerAdded = getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
+    this.selectionError = getString(LanguageKeys.LAYER_ADDED, LanguageDefaults.LAYER_ADDED);
 
     //Sounds
-    this.clickSound = getSound(LanguageKeys.CLICK_SOUND, LanguageDefaults.CLICK_SOUND);
 
   }
 
@@ -108,8 +120,36 @@ public class LanguageManager {
     }
   }
 
-  public String getHelloWorld() {
-    return helloWorld;
+  public String[] getHelp() {
+    return help;
+  }
+
+  public String getConfigReloaded() {
+    return configReloaded;
+  }
+
+  public String[] getJoinedSpleef() {
+    return joinedSpleef;
+  }
+
+  public String getLeftSpleef() {
+    return leftSpleef;
+  }
+
+  public String getDeathMessage() {
+    return deathMessage;
+  }
+
+  public String getPlayAreaSet() {
+    return playAreaSet;
+  }
+
+  public String getLayerAdded() {
+    return layerAdded;
+  }
+
+  public String getSelectionError() {
+    return selectionError;
   }
 
   public String getNoPermission() {
@@ -118,10 +158,6 @@ public class LanguageManager {
 
   public String getChatPrefix() {
     return chatPrefix;
-  }
-
-  public XSound getClickSound(){
-    return clickSound;
   }
 
 }
