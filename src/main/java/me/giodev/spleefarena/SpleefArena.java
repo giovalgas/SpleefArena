@@ -74,7 +74,7 @@ public final class SpleefArena extends JavaPlugin {
     pm.registerEvents(new PlayAreaLeaveListener(this), this);
     pm.registerEvents(new SpleefPlayerDeathListener(this),this);
     pm.registerEvents(new SnowballListener(), this);
-    pm.registerEvents(new BlockBreakListener(), this);
+    pm.registerEvents(new BlockBreakListener(this), this);
   }
 
   private void loadCommands() {

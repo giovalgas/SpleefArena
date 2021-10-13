@@ -10,7 +10,7 @@ public class CountdownTimer implements Runnable {
 
   public CountdownTimer(SpleefArena plugin) {
     this.plugin = plugin;
-    this.secondsRemaining = 30; //TODO -> add to config file
+    this.secondsRemaining = plugin.getConfigManager().getResetTimer();
   }
 
   @Override
@@ -25,7 +25,7 @@ public class CountdownTimer implements Runnable {
   }
 
   public void resetTimer() {
-    secondsRemaining = 30; //TODO -> add to config file
+    secondsRemaining = plugin.getConfigManager().getResetTimer();
   }
 
   public void onDisable() {

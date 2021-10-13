@@ -31,7 +31,13 @@ public class SpleefPlayer {
   public SpleefPlayer(SpleefArena plugin, Player player) {
     this.plugin = plugin;
     this.player = player;
-    this.resetLocation = new Location(Bukkit.getWorld("world"), 723, 83, 1521); //TODO -> add config.yml
+
+    this.resetLocation = new Location(Bukkit.getWorld("world"),
+            plugin.getConfigManager().getResetLocation()[0],
+            plugin.getConfigManager().getResetLocation()[1],
+            plugin.getConfigManager().getResetLocation()[2]
+    );
+
     this.loadPlayer();
   }
 
@@ -51,7 +57,7 @@ public class SpleefPlayer {
 
   private void giveKit() {
     ItemStack shovel = SpleefShovel.getSpleefShovel();
-    ItemStack snowballs = Snowballs.getSnowball(16);
+    ItemStack snowballs = Snowballs.getSnowball(plugin.getConfigManager().getSnowballStartAmount());
 
     player.getInventory().setContents(new ItemStack[]{shovel,snowballs});
   }
