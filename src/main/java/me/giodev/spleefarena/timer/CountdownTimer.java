@@ -5,11 +5,10 @@ import me.giodev.spleefarena.SpleefArena;
 
 public class CountdownTimer implements Runnable {
 
-  private SpleefArena plugin;
+  private SpleefArena plugin = SpleefArena.getInstance();
   private int secondsRemaining;
 
-  public CountdownTimer(SpleefArena plugin) {
-    this.plugin = plugin;
+  public CountdownTimer(SpleefArena plugin) { ;
     this.secondsRemaining = plugin.getConfigManager().getResetTimer();
   }
 

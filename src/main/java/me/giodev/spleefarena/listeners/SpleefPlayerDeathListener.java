@@ -10,11 +10,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class SpleefPlayerDeathListener implements Listener {
 
-  private SpleefArena plugin;
-
-  public SpleefPlayerDeathListener(SpleefArena plugin) {
-    this.plugin = plugin;
-  }
+  private SpleefArena plugin = SpleefArena.getInstance();
 
   @EventHandler
   public void onPlayerMove(PlayerMoveEvent event) {

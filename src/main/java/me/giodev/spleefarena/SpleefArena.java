@@ -50,7 +50,7 @@ public final class SpleefArena extends JavaPlugin {
     loadEvents();
     loadDependencies();
 
-    arenaManager = new ArenaManager(this);
+    arenaManager = new ArenaManager();
     log.info("Plugin fully started!");
   }
 
@@ -74,9 +74,9 @@ public final class SpleefArena extends JavaPlugin {
 
   private void loadEvents() {
     PluginManager pm = getServer().getPluginManager();
-    pm.registerEvents(new SpleefPlayerDeathListener(this),this);
+    pm.registerEvents(new SpleefPlayerDeathListener(),this);
     pm.registerEvents(new SnowballListener(), this);
-    pm.registerEvents(new BlockBreakListener(this), this);
+    pm.registerEvents(new BlockBreakListener(), this);
     WorldGuard.getInstance().getPlatform().getSessionManager().registerHandler(ArenaJoinLeaveHandler.FACTORY, null);
   }
 

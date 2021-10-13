@@ -11,11 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreakListener implements Listener {
 
-  private SpleefArena plugin;
-
-  public BlockBreakListener(SpleefArena plugin) {
-    this.plugin = plugin;
-  }
+  private SpleefArena plugin = SpleefArena.getInstance();
 
   @EventHandler
   public void onBlockBreak(BlockBreakEvent event) {

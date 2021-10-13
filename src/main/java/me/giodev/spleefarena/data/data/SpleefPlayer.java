@@ -18,7 +18,7 @@ import java.util.Collection;
 
 public class SpleefPlayer {
 
-  private SpleefArena plugin;
+  private SpleefArena plugin = SpleefArena.getInstance();
   private Player player;
   private Location resetLocation;
   private int deaths;
@@ -29,7 +29,6 @@ public class SpleefPlayer {
   private Collection<PotionEffect> potionEffects;
 
   public SpleefPlayer(SpleefArena plugin, Player player) {
-    this.plugin = plugin;
     this.player = player;
 
     this.resetLocation = new Location(Bukkit.getWorld("world"),

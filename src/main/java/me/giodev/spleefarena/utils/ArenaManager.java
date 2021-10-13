@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ArenaManager {
 
-  private SpleefArena plugin;
+  private SpleefArena plugin = SpleefArena.getInstance();
   private ArrayList<Region> snowLayers = new ArrayList<>();
   private BukkitTask runnable;
   private CountdownTimer timer;
@@ -32,8 +32,7 @@ public class ArenaManager {
 
   private static World arenaWorld;
 
-  public ArenaManager(SpleefArena plugin) {
-    this.plugin = plugin;
+  public ArenaManager() {
     this.timer = new CountdownTimer(plugin);
     this.runnable = Bukkit.getScheduler().runTaskTimer(plugin, timer, 0L, 20L);
     this.arenaInfo = new YamlConfiguration();
