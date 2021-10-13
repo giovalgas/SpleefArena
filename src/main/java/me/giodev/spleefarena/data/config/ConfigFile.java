@@ -112,6 +112,28 @@ public class ConfigFile {
     }
   }
 
+  public Integer[] getIntegerList(String p, Integer[] defaultList)throws InvalidConfigurationException {
+    if (config.isList(p)) {
+      List<?> unknownList = config.getList(p);
+      ArrayList<Integer> integerList = new ArrayList<>(unknownList.size());
+      for (Object obj : unknownList) {
+        if (obj instanceof String) {
+          integerList.add(Integer.getInteger((String) obj));
+        } else if (obj instanceof Double || obj instanceof Integer || obj instanceof Boolean) {
+          integerList.add((Integer) obj);
+        } else {
+          throw new InvalidConfigurationException("'" + configFile.getName() + "' at path: '" + p +"' is not a integer list");
+        }
+      }
+      return integerList.toArray(new Integer[0]);
+    } else if (config.contains(p)) {
+      throw new InvalidConfigurationException("'" + configFile.getName() + "' at path: '" + p +"' is not a list");
+    } else {
+      config.set(p, defaultList);
+      return defaultList;
+    }
+  }
+
   public void rewriteValue(String p, Object newValue){
     config.set(p, newValue);
   }
