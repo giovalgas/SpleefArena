@@ -15,8 +15,9 @@ public class LeaveArenaSubCommand implements SubCommand {
     Player player = (Player) sender;
     if(plugin.getSpleefPlayer(player) != null) {
       plugin.removePlayerFromArena(player);
+      player.sendMessage(plugin.getLanguageManager().getLeftSpleef());
     }else{
-      System.out.println("Not in arena");
+      player.sendMessage(plugin.getLanguageManager().getHelp());
     }
 
   }

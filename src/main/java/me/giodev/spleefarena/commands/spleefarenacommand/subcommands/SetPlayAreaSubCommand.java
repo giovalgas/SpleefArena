@@ -23,10 +23,13 @@ public class SetPlayAreaSubCommand implements SubCommand {
   @Override
   public void executeCommand(CommandSender sender, String[] args, SpleefArena plugin) {
 
-    //TODO -> Add proper messages
-
     Player player = (Player) sender;
     Region selection = WorldEditUtil.getPlayerSelection(BukkitAdapter.adapt(player));
+
+    if(selection == null) {
+      player.sendMessage(plugin.getLanguageManager().getSelectionError());
+      return;
+    }
 
     ProtectedCuboidRegion playableArea = new ProtectedCuboidRegion(
             AREA_KEY,
@@ -47,6 +50,8 @@ public class SetPlayAreaSubCommand implements SubCommand {
 
     plugin.getArenaManager().setArenaWorld(player.getWorld());
     rm.addRegion(playableArea);
+
+    player.sendMessage(plugin.getLanguageManager().getPlayAreaSet());
 
   }
 

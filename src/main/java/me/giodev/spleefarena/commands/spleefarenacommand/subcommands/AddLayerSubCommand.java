@@ -16,8 +16,7 @@ public class AddLayerSubCommand implements SubCommand {
 
     Player player = (Player) sender;
     plugin.getArenaManager().addLayer(WorldEditUtil.getPlayerSelection(BukkitAdapter.adapt(player)));
-    //TODO -> Add messages
-    plugin.getLog().info("Added a layer");
+    player.sendMessage(plugin.getLanguageManager().getLayerAdded());
 
   }
 

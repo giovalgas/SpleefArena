@@ -21,7 +21,7 @@ public class SpleefPlayerDeathListener implements Listener {
 
     if(event.getTo().getY() <= deathY && WorldGuardUtil.isLocationInRegion(event.getFrom(), SetPlayAreaSubCommand.AREA_KEY)) {
       plugin.getSpleefPlayer(player).killPlayer();
-      //TODO -> add messages
+      player.sendMessage(plugin.getLanguageManager().getDeathMessage());
     }
 
   }

@@ -20,8 +20,7 @@ public class WorldEditUtil {
       if(selectionWorld == null) throw new IncompleteRegionException();
       selection = localSession.getSelection(selectionWorld).clone();
     } catch (IncompleteRegionException e) {
-      //TODO -> Add proper error message
-      actor.printError(TextComponent.of("Please make a region selection first."));
+      //TODO -> Add proper error message done
       selection = null;
     }
 

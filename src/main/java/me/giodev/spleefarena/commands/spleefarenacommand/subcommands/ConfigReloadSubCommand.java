@@ -18,7 +18,7 @@ public class ConfigReloadSubCommand implements SubCommand {
       e.printStackTrace();
     }
 
-    //TODO -> message (reloading config)
+    sender.sendMessage(plugin.getLanguageManager().getConfigReloaded());
 
   }
 

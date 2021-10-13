@@ -42,10 +42,10 @@ public class ArenaJoinLeaveHandler extends Handler {
 
     if(entered.contains(WorldGuardUtil.getArenaRegion())) {
       SpleefArena.getInstance().addPlayerToArena(bukkitPlayer);
-      bukkitPlayer.sendMessage("Joined Spleef"); //TODO -> Add messages
+      bukkitPlayer.sendMessage(SpleefArena.getInstance().getLanguageManager().getJoinedSpleef());
     }else if(exited.contains(WorldGuardUtil.getArenaRegion())) {
       SpleefArena.getInstance().removePlayerFromArena(bukkitPlayer);
-      bukkitPlayer.sendMessage("Left Spleef"); //TODO -> add messages
+      bukkitPlayer.sendMessage(SpleefArena.getInstance().getLanguageManager().getLeftSpleef());
      }
 
     return player.hasPermission(Permission.ENTER_ARENA);
