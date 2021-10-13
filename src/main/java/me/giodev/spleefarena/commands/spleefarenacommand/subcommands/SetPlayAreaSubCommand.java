@@ -37,6 +37,7 @@ public class SetPlayAreaSubCommand implements SubCommand {
     playableArea.setFlag(Flags.PVP, StateFlag.State.DENY);
     playableArea.setFlag(Flags.HUNGER_DRAIN, StateFlag.State.DENY);
     playableArea.setFlag(Flags.FALL_DAMAGE, StateFlag.State.ALLOW);
+    playableArea.setFlag(Flags.MOB_SPAWNING, StateFlag.State.DENY);
 
     RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(player.getWorld()));
 
