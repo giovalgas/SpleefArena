@@ -1,6 +1,6 @@
 name: SpleefArena
 version: ${project.version}
-main: me.giodev.spleefarena.SpleefArena
+main: dev.giovalgas.spleefarena.SpleefArena
 api-version: 1.16
 depend: [WorldGuard,WorldEdit]
 commands:
